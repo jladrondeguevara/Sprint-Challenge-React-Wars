@@ -1,19 +1,20 @@
 // Write your Character component here
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-const Character = () => {
-    const [characterData, setCharacterData] = useState([]);
-    useEffect(() => {
-        axios.get('https://rickandmortyapi.com/api/character/')
-        .then(characters => {
-            console.log(characters.data.results);
-        })
-    }, [])
+const Character = (character) => {
 
+    console.log(character.props);
     return (
-        <div>
-            <h1>Character</h1>
+        <div className = "character-wrapper">
+            <div>
+                <h1>{character.props.name}</h1>
+                <img src = {character.props.image}></img>
+            </div>
+            <div className = "character-description">
+                <p>Gender: {character.props.gender}</p>
+                <p>Species: {character.props.species}</p>
+                <p>Status: {character.props.status}</p>
+            </div>
         </div>
     );
 };
